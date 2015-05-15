@@ -1,0 +1,29 @@
+{
+  "name": "wp-bootstrap-navwalker",
+  "version": "3.0.0",
+  "authors": [
+    "twittem"
+  ],
+  "description": "A custom WordPress nav walker class to fully implement the Twitter Bootstrap 3.0+ navigation style in a custom theme using the WordPress built in menu manager.",
+  "main": "wp_bootstrap_navwalker.php",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "php",
+    "wordpress"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/twittem/wp-bootstrap-navwalker",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "readme",
+    "LICENSE.txt",
+    "README.md",
+    "screenshot*.png"
+  ]
+}
