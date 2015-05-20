@@ -78,9 +78,9 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 			$item_output .= $args->after;
 
 			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-			$output .= '\n' . $indent . $indent;
+			$output .= $indent . $indent;
 			$output .= get_megamenu();
-			$output .= '\n' . $indent;
+			$output .= $indent;
 		} else if ( strcasecmp( $item->title, 'divider') == 0 && $depth === 1 ) {
 			$output .= $indent . '<li role="presentation" class="divider">';
 		} else if ( strcasecmp( $item->attr_title, 'dropdown-header') == 0 && $depth === 1 ) {
