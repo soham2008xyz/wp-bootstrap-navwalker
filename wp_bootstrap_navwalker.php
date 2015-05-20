@@ -50,7 +50,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 		} else if( strcasecmp( $item->attr_title, 'divider-vertical' ) == 0 ) {
 			$output .= $indent . '<li role="presentation" class="divider-vertical"> | ';
 		} else if( strcasecmp( $item->attr_title, 'megamenu' ) == 0 && $depth === 0 ) {
-			$output .= $indent . '<li role="megamenu" class="dropdown megamenu megamenu-fw">';
+			$output .= $indent . '<li role="megamenu" class="dropdown megamenu-dropdown megamenu-fw">';
 
 			$atts = array();
 			$atts['title']  = ! empty( $item->title )	? $item->title	: '';
