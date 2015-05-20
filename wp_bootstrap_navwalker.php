@@ -49,6 +49,37 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 			$output .= $indent . '<li role="presentation" class="divider">';
 		} else if( strcasecmp( $item->attr_title, 'divider-vertical' ) == 0 ) {
 			$output .= $indent . '<li role="presentation" class="divider-vertical"> | ';
+		} else if( strcasecmp( $item->attr_title, 'megamenu' ) == 0 && $depth === 1 ) {
+			$output .= $indent . '<li role="megamenu" class="dropdown megamenu megamenu-fw">';
+
+			$atts = array();
+			$atts['title']  = ! empty( $item->title )	? $item->title	: '';
+			$atts['target'] = ! empty( $item->target )	? $item->target	: '';
+			$atts['rel']    = ! empty( $item->xfn )		? $item->xfn	: '';
+			$atts['href']   = '#';
+			$atts['data-toggle']	= 'dropdown';
+			$atts['class']		= 'dropdown-toggle';
+			$atts['aria-haspopup']	= 'true';
+			$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args );
+			
+			$attributes = '';
+			foreach ( $atts as $attr => $value ) {
+				if ( ! empty( $value ) ) {
+					$value = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
+					$attributes .= ' ' . $attr . '="' . $value . '"';
+				}
+			}
+			
+			$item_output = $args->before;
+			$item_output .= '<a'. $attributes .'>';
+			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+			$item_output .= ( $args->has_children && 0 === $depth ) ? ' <span class="caret"></span></a>' : '</a>';
+			$item_output .= $args->after;
+
+			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+			$output .= '\n' . $indent . $indent;
+			$output .= get_megamenu();
+			$output .= '\n' . $indent;
 		} else if ( strcasecmp( $item->title, 'divider') == 0 && $depth === 1 ) {
 			$output .= $indent . '<li role="presentation" class="divider">';
 		} else if ( strcasecmp( $item->attr_title, 'dropdown-header') == 0 && $depth === 1 ) {
