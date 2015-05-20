@@ -58,6 +58,9 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 			$atts['rel']    = ! empty( $item->xfn )		? $item->xfn	: '';
 			$atts['href']   = '#';
 			$atts['data-toggle']	= 'dropdown';
+			if( $depth = 0 ) {
+				$atts['data-hover'] = 'dropdown';
+			}
 			$atts['class']		= 'dropdown-toggle';
 			$atts['aria-haspopup']	= 'true';
 			$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args );
